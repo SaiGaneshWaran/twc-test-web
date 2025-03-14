@@ -1,12 +1,14 @@
-import { useContext,useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
+import doodle from '../assets/doodle.png';
+import twc from '../assets/twc.png';
+import logou from '../assets/logout.png';
 
 const WelcomePage = () => {
   const { user, logout } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  // Redirect if not logged in
   useEffect(() => {
     if (!user) {
       navigate('/login');
@@ -19,25 +21,23 @@ const WelcomePage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-800">
-      {/* Header */}
-      
-      
-      {/* Main Content */}
-      <div className="flex flex-col h-[calc(100vh)] bg-twc-dark relative">
-        {/* Corner Effects */}
-        <div className="absolute left-0 top-0 w-0 h-0 border-t-[150px] border-l-[150px] border-t-white border-l-transparent opacity-10"></div>
-        <div className="absolute right-0 bottom-0 w-0 h-0 border-b-[150px] border-r-[150px] border-b-white border-r-transparent opacity-10"></div>
-        
-        {/* Logo */}
+    <div className="min-h-screen bg-[#173B3F] relative overflow-hidden">
+      {/* Main container */}
+      <div className="flex flex-col h-screen relative z-10">
+        {/* Logo in top-left corner */}
         <div className="p-8">
-          <div className="flex items-end">
-            <span className="text-twc-red text-4xl font-bold">twc</span>
-            <div className="text-white ml-2 text-2xl font-bold">contacts<br />portal</div>
-          </div>
+        <div className="flex items-end mb-2">
+              <img src={twc} alt="TWC Logo" className="h-7 mr-2" />
+            </div>
+            <div>
+              <span className="text-white text-4xl font-bold">contacts</span>
+              
+            </div>
+            <div><span className="text-white text-2xl  ml-1">portal</span></div>
+          
         </div>
         
-        {/* Welcome Content */}
+        {/* Welcome Content - Centered */}
         <div className="flex-grow flex flex-col justify-center px-16">
           <h1 className="text-5xl font-bold text-white mb-4">Welcome,</h1>
           <p className="text-2xl text-white mb-12">
@@ -48,25 +48,47 @@ const WelcomePage = () => {
           <div>
             <Link
               to="/contacts/new"
-              className="inline-block rounded-full border border-white text-white px-8 py-3 hover:bg-white hover:text-twc-dark transition-colors"
+              className="inline-block rounded-full border border-white text-white px-8 py-3 hover:bg-white hover:text-[#173B3F] transition-colors"
             >
               add your first contact
             </Link>
           </div>
         </div>
         
-        {/* Logout */}
-        <div className="p-6 absolute bottom-0 right-0">
+        {/* Logout - Bottom right with icon before text */}
+        <div className="p-8 text-xl absolute bottom-0 right-0">
           <button
             onClick={handleLogout}
-            className="text-white flex items-center hover:underline"
+            className="text-white flex items-center underline hover:underline"
           >
+            <img src={logou} alt="TWC Logo" className="h-6 w-6 mr-2" />
             <span>logout</span>
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
-            </svg>
           </button>
         </div>
+      </div>
+      
+      {/* Top-right curved cut-out section */}
+      <div className="absolute top-0 right-0 w-[200px] h-[200px] rounded-bl-[900px] bg-[#F5F5F5] overflow-hidden">
+        <div 
+          className="absolute inset-0" 
+          style={{
+            backgroundImage: `url(${doodle})`,
+            backgroundSize: '400px 400px',
+            opacity: 0.15
+          }}
+        ></div>
+      </div>
+      
+      {/* Bottom-left curved cut-out section */}
+      <div className="absolute bottom-0 left-0 w-[200px] h-[200px] rounded-tr-[1400px] bg-[#F5F5F5] overflow-hidden">
+        <div 
+          className="absolute inset-0" 
+          style={{
+            backgroundImage: `url(${doodle})`,
+            backgroundSize: '400px 400px',
+            opacity: 0.15
+          }}
+        ></div>
       </div>
     </div>
   );

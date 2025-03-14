@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { register } from '../services/authService';
+import twcLogo from '../assets/image.png'; 
+import doodle from '../assets/doodle.png';
 
 const RegisterPage = () => {
   const [formData, setFormData] = useState({
@@ -48,87 +50,102 @@ const RegisterPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-800">
-      {/* Header */}
-     
-      {/* Main Content */}
-      <div className="flex h-[calc(100vh)]">
-        {/* Left Section */}
-        <div className="w-1/2 bg-twc-dark p-16 flex flex-col justify-center">
-          <h1 className="text-5xl font-bold text-white mb-4">Register Now!</h1>
-          
-          <form onSubmit={handleSubmit} className="space-y-6 max-w-md mt-12">
-            <div>
-              <input
-                type="email"
-                name="email"
-                placeholder="e-mail"
-                value={formData.email}
-                onChange={handleChange}
-                required
-                className="w-full rounded-full py-3 px-6 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-            </div>
+    <div className="min-h-screen flex">
+      <div className="flex w-full h-screen relative">
+        {/* Left Section - dark teal background */}
+        <div className="w-2/5 bg-[#1A3640] p-16 flex flex-col justify-center">
+          <div className="z-10">
+            <h1 className="text-5xl font-bold text-white mb-4">Register Now!</h1>
             
-            <div>
-              <input
-                type="password"
-                name="password"
-                placeholder="create password"
-                value={formData.password}
-                onChange={handleChange}
-                required
-                className="w-full rounded-full py-3 px-6 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-            </div>
-            
-            <div>
-              <input
-                type="password"
-                name="confirmPassword"
-                placeholder="confirm password"
-                value={formData.confirmPassword}
-                onChange={handleChange}
-                required
-                className="w-full rounded-full py-3 px-6 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-            </div>
-            
-            <div>
-              <button
-                type="submit"
-                disabled={isLoading}
-                className="rounded-full border border-white text-white px-8 py-2 hover:bg-white hover:text-twc-dark transition-colors"
-              >
-                {isLoading ? 'Registering...' : 'register'}
-              </button>
-            </div>
-            
-            <div>
-              <Link to="/login" className="text-white hover:underline flex items-center">
-                <span className="mr-2">&#60;</span> Back to login
-              </Link>
-            </div>
-            
-            {error && (
-              <div className="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mt-4">
-                <p>{error}</p>
+            <form onSubmit={handleSubmit} className="space-y-6 max-w-md mt-12">
+              <div>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="e-mail"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  className="w-full rounded-full py-3 px-6 text-gray-700 focus:outline-none shadow-md font-bold"
+                />
               </div>
-            )}
-          </form>
+              
+              <div>
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="create password"
+                  value={formData.password}
+                  onChange={handleChange}
+                  required
+                  className="w-full rounded-full py-3 px-6 text-gray-700 focus:outline-none shadow-md font-bold"
+                />
+              </div>
+              
+              <div>
+                <input
+                  type="password"
+                  name="confirmPassword"
+                  placeholder="confirm password"
+                  value={formData.confirmPassword}
+                  onChange={handleChange}
+                  required
+                  className="w-full rounded-full py-3 px-6 text-gray-700 focus:outline-none shadow-md font-bold"
+                />
+              </div>
+              
+              <div>
+                <button
+                  type="submit"
+                  disabled={isLoading}
+                  className="rounded-full border border-white text-white px-8 py-2 hover:bg-white hover:text-[#1A3640] transition-colors"
+                >
+                  {isLoading ? 'Registering...' : 'register'}
+                </button>
+              </div>
+              
+              <div>
+                <Link to="/login" className="text-white hover:underline flex items-center underline">
+                  <span className="mr-2">&#60;</span> Back to login
+                </Link>
+              </div>
+              
+              {error && (
+                <div className="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mt-4">
+                  <p>{error}</p>
+                </div>
+              )}
+            </form>
+          </div>
         </div>
         
-        {/* Right Section */}
-        <div className="w-1/2 bg-white flex flex-col justify-center items-center relative">
-          <div className="absolute right-0 top-0 w-0 h-0 border-t-[250px] border-r-[250px] border-t-white border-r-transparent"></div>
-          <div className="absolute left-0 bottom-0 w-0 h-0 border-b-[250px] border-l-[250px] border-b-white border-l-transparent"></div>
+        {/* Right Section - with doodles background */}
+        <div className="w-3/5 bg-white flex flex-col justify-center items-center relative">
+          {/* Doodles background - use a CSS pattern or an actual image */}
+          <div 
+            className="absolute inset-0 opacity-10" 
+            style={{
+              backgroundImage: `url(${doodle})`,
+              backgroundSize: '400px 400px'
+            }}
+          ></div>
           
-          <div className="text-center">
+          {/* TWC Logo and text */}
+          <div className="text-center z-10">
             <div className="flex items-end justify-center mb-8">
-              <span className="text-twc-red text-5xl font-bold">twc</span>
+              <img src={twcLogo} alt="TWC Logo" className="h-12 mr-2" />
+              <span className="text-black text-5xl font-bold">twc</span>
             </div>
-            <div className="text-twc-dark text-5xl font-bold">contacts<br />portal</div>
+            <div className="text-[#1A3640]">
+              <span className="text-7xl font-bold">contacts</span><br/>
+              <span className="text-7xl font-normal">portal</span>
+            </div>
           </div>
+        </div>
+        
+        {/* Curved divider */}
+        <div className="absolute top-0 right-[calc(60%-100px)] h-full flex items-center pointer-events-none">
+          <div className="h-[2300px] w-[1300px] bg-[#1A3640] rounded-r-full"></div>
         </div>
       </div>
     </div>
