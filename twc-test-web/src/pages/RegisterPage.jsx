@@ -50,10 +50,7 @@ const RegisterPage = () => {
   return (
     <div className="min-h-screen bg-gray-800">
       {/* Header */}
-      <div className="p-4 text-white">
-        Register
-      </div>
-      
+     
       {/* Main Content */}
       <div className="flex h-[calc(100vh-3rem)]">
         {/* Left Section */}
