@@ -113,9 +113,7 @@ const ContactsPage = () => {
   return (
     <div className="min-h-screen bg-gray-800">
       {/* Header */}
-      <div className="p-4 text-white">
-        Contacts
-      </div>
+      
       
       {/* Main Content */}
       <div className="flex flex-col h-[calc(100vh-3rem)] bg-twc-dark relative">

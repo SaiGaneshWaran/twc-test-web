@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState, useContext,useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createContact } from '../services/contactService';
 import { AuthContext } from '../context/AuthContext';
@@ -16,10 +16,11 @@ const NewContactPage = () => {
   const { user, logout } = useContext(AuthContext);
 
   // Redirect if not logged in
-  if (!user) {
-    navigate('/login');
-    return null;
-  }
+  useEffect(() => {
+    if (!user) {
+      navigate('/login');
+    }
+  }, [user, navigate]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
