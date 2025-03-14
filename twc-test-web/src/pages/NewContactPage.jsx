@@ -57,7 +57,7 @@ const NewContactPage = () => {
      
       
       {/* Main Content */}
-      <div className="flex flex-col h-[calc(100vh-3rem)] bg-twc-dark relative">
+      <div className="flex flex-col h-[calc(100vh)] bg-twc-dark relative">
         {/* Corner Effects */}
         <div className="absolute left-0 top-0 w-0 h-0 border-t-[150px] border-l-[150px] border-t-white border-l-transparent opacity-10"></div>
         <div className="absolute right-0 bottom-0 w-0 h-0 border-b-[150px] border-r-[150px] border-b-white border-r-transparent opacity-10"></div>

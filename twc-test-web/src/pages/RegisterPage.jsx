@@ -52,7 +52,7 @@ const RegisterPage = () => {
       {/* Header */}
      
       {/* Main Content */}
-      <div className="flex h-[calc(100vh-3rem)]">
+      <div className="flex h-[calc(100vh)]">
         {/* Left Section */}
         <div className="w-1/2 bg-twc-dark p-16 flex flex-col justify-center">
           <h1 className="text-5xl font-bold text-white mb-4">Register Now!</h1>
